@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: quiz-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: quiz
+        uri: lb://quiz-service
+        predicates:
+        - Path=/quiz/**
+      - id: flashcard
+        uri: lb://flashcard-service
+        predicates:
+        - Path=/flashcard/**
